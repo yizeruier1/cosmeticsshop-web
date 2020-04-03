@@ -1,0 +1,61 @@
+$bgc = #e4e4e4  // 背景色
+
+
+// 通用方法
+// 文字垂直水平对齐
+textCenter($h)
+    text-align center
+    line-height $h
+
+// 文本超出容器 显示 ...
+textOverflow(n)
+    overflow hidden
+    text-overflow ellipsis
+    if n > 1
+        display -webkit-box
+        -webkit-line-clamp n
+        -webkit-box-orient vertical
+    else
+        white-space nowrap
+
+
+// transition 动画
+.fade-transform-leave-active,
+.fade-transform-enter-active
+    transition all .3s
+
+.fade-transform-enter
+    opacity 0
+    transform translateX(34px)
+
+.fade-transform-leave-to
+    opacity 0
+    transform translateX(-34px)
+
+@keyframes heartBeat
+    0%
+        -webkit-transform scale(1)
+        transform scale(1)
+
+    28%
+        -webkit-transform scale(1.2)
+        transform scale(1.2)
+
+    42%
+        -webkit-transform scale(1)
+        transform scale(1)
+
+.heartBeat
+    -webkit-animation-name heartBeat
+    animation-name heartBeat
+    -webkit-animation-duration .7s
+    animation-duration .7s
+    -webkit-animation-timing-function ease-in-out
+    animation-timing-function ease-in-out
+    -webkit-transform-origin 120px center
+    transform-origin 120px center
+.animated
+    -webkit-animation-duration .7s
+    animation-duration .7s
+    -webkit-animation-fill-mode both
+    animation-fill-mode both
