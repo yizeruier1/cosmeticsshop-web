@@ -10,7 +10,7 @@
 
         <div class="list">
             <div class="item" v-for="item in list.data" :key="item.id" @click="viewDetail(item.id)">
-                <img :src="item.img" alt="" class="banner" />
+                <img :src="typeof item.img === 'string' ? item.img : item.img[0]" alt="" class="banner" />
                 <p class="name">{{ item.name }}</p>
             </div>
         </div>

@@ -1,6 +1,13 @@
 <template>
-    <div>
-        <img :src="detail.img" alt="" class="banner" />
+    <div style="padding-bottom:60px;">
+        <img :src="detail.img" alt="" class="banner" v-if="typeof detail.img === 'string'" />
+        <van-swipe :autoplay="3000" indicator-color="white" v-else>
+            <van-swipe-item v-for="(item, index) in detail.img" :key="index">
+                <van-image width="100%" fit="cover" :src="item" />
+            </van-swipe-item>
+        </van-swipe>
+
+
         <div class="info-warp">
             <p>{{ detail.name }}</p>
             <div>￥{{ detail.price }}</div>
@@ -35,8 +42,6 @@
                 this.arr = this.arr.concat(this.goodsData[i].data)
             }
             this.detail = this.arr[id]
-
-            console.log(this.detail)
         },
         computed: {
             ...mapState([
@@ -99,4 +104,7 @@
         position fixed
         left 0
         top 0
+    /deep/ .van-swipe__track
+        justify-content center
+        align-items center
 </style>

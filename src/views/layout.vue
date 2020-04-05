@@ -1,9 +1,9 @@
 <template>
     <div style="padding-bottom:44Px;">
         <keep-alive>
-            <router-view v-if="$route.meta.keepAlive" />
+            <router-view v-if="$route.name !== 'Detail'" />
         </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive" />
+        <router-view v-if="$route.name === 'Detail'" />
 
         <van-tabbar
             route
